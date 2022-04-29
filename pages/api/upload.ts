@@ -6,6 +6,10 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const data = { url: req.url, body: req.body };
-  res.status(200).json(data);
+  try {
+    const data = { url: req.url, body: req.body };
+    res.status(200).json(data);
+  } catch (error: any) {
+    res.status(500).json({ error: error?.message });
+  }
 }
