@@ -7,10 +7,11 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { ApolloClientProps, initWithApollo } from "utils/apollo";
 import { ApolloProvider } from "@apollo/client";
-import { Amplify } from "aws-amplify";
+import { Amplify, API } from "aws-amplify";
 import awsconfig from "@src/aws-exports";
 
 Amplify.configure({ ...awsconfig, ssr: true });
+API.configure(awsconfig);
 
 function MyApp({ Component, pageProps, apollo }: AppProps & ApolloClientProps) {
   // 서버사이드 렌더링으로 인한 오류를 방지하기 위해 사용
