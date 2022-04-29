@@ -29,7 +29,7 @@ type Data = {
 
 export const data: Data[] = [
   {
-    name: "ResNet50",
+    name: "Simple CNN Image Classification",
     layers: [
       { type: "Conv2D" },
       { type: "MaxPooling2D" },

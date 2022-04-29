@@ -40,6 +40,24 @@ const JupyterIcon = () => {
   );
 };
 
+const Ellipsis = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className="bi bi-three-dots-vertical"
+      viewBox="0 0 16 16"
+    >
+      <path
+        stroke="white"
+        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+      />
+    </svg>
+  );
+};
+
 const Modal = () => {
   return (
     <>
@@ -88,20 +106,32 @@ const ResNet50 = () => {
         <div className="mt-28 w-full p-10 bg-primary rounded-t-3xl h-7/12">
           <div className="flex justify-between items-center">
             <div className="flex flex-col justify-start items-start">
-              <h1 className="text-gray-100 font-bold text-5xl">ResNet50</h1>
+              <h1 className="text-gray-100 font-bold text-5xl">
+                Simple CNN Image Classification
+              </h1>
               <h2>Made by joseph1191</h2>
             </div>
             <div className="flex justify-end items-center gap-2">
-              <button className="btn btn-outline btn-secondary">Edit</button>
-              <label
-                htmlFor="my-modal-3"
-                className="btn btn-outline btn-accent"
-              >
-                Export
-              </label>
+              <button className="btn btn-outline btn-accent">Run</button>
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-outline cursor-pointer">
+                  <Ellipsis />
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a>Edit</a>
+                  </li>
+                  <li>
+                    <label htmlFor="my-modal-3">Export</label>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="flex justify-center flex-wrap items-center mt-10">
+          <div className="flex justify-center flex-wrap items-center mt-10 xl:px-52">
             {data[0].layers.map((layer, idx) => (
               <>
                 <div className="w-28 h-36 py-5 px-2 pl-5 bg-base-300 rounded-2xl my-2 flex flex-col justify-start items-center">
