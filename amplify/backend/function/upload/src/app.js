@@ -40,8 +40,12 @@ app.use(function(req, res, next) {
 });
 
 app.post('/upload', function(req, res) {
-  console.log(req.body)
-  res.json({success: true})
+  const data = {url: req.url, body: req.body}
+  try {
+    res.json({...data, success: true})
+  } catch (error) {
+    res.json({...data, success: false})
+  }
 })
 
 app.listen(3000, function() {
