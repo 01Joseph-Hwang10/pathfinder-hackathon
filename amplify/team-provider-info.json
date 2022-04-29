@@ -16,10 +16,10 @@
         "pathfinderbackend35e4d986": {},
         "true": {}
       },
-      "function": {
-        "uploadData": {
-          "deploymentBucketName": "amplify-pathfinderbackend-dev-181411-deployment",
-          "s3Key": "amplify-builds/uploadData-505a70356c4543773043-build.zip"
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1345w45af90nh",
+          "type": "cicd"
         }
       }
     }
