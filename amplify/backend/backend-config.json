@@ -50,7 +50,38 @@
       }
     }
   },
-  "function": {},
+  "function": {
+    "upload": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "pathfinderbackend",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "pathfinderbackend35e4d986",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "data",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ]
+    }
+  },
   "storage": {
     "data": {
       "service": "S3",
