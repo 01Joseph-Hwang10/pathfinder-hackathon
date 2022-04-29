@@ -12,12 +12,6 @@
       "AmplifyAppId": "d1345w45af90nh"
     },
     "categories": {
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d1345w45af90nh",
-          "type": "manual"
-        }
-      },
       "auth": {
         "pathfinderbackend35e4d986": {},
         "true": {}

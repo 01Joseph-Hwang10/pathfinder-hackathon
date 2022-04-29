@@ -17,13 +17,7 @@
       }
     }
   },
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "providerPlugin": "awscloudformation",
-      "type": "manual"
-    }
-  },
+  "hosting": {},
   "auth": {
     "pathfinderbackend35e4d986": {
       "service": "Cognito",
