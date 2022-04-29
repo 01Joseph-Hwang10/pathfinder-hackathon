@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import type { NextPage } from "next";
-import { Auth } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import { CognitoUser } from "@aws-amplify/auth";
 
 const Home: NextPage = () => {
+  useEffect(() => {
+    (async function () {
+      console.log(await API.endpoint("upload"));
+    })();
+  }, []);
   // useEffect(() => {
   //   (async function () {
   //     const user: CognitoUser = await Auth.signIn({
