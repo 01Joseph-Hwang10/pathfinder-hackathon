@@ -1,0 +1,10 @@
+{
+  "httpMethod": "POST",
+  "path": "/upload",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "email": "sth@sth.com"
+  }
+}

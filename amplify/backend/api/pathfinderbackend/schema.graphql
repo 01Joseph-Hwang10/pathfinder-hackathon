@@ -1,0 +1,33 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type User @model {
+    id: ID!
+    name: String!
+    models: [AIModel!]! @hasMany
+}
+
+type AIModel @model {
+    id: ID!
+    name: String!
+    source: String! # file id or name
+    data: String! # file id or name
+    layers: [Layer!]! @hasMany
+}
+
+enum LayerType {
+    Dense
+    Conv2D
+    MaxPooling2D
+    Flatten
+    Dropout
+    BatchNormalization
+}
+
+type Layer @model {
+    id: ID!
+    name: String
+    type: LayerType!
+    defaultParams: AWSJSON
+}

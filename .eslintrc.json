@@ -1,0 +1,10 @@
+{
+  "extends": "@react-native-community",
+  "rules": {
+    "quotes": ["error", "double"],
+    "no-extend-native": "off",
+    "no-alert": "off",
+    "eslint-comments/no-unlimited-disable": "off",
+    "eslint-comments/no-unused-disable": "off"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pathfinderbackend-dev-181411-authRole",
+      "UnauthRoleArn": "arn:aws:iam::792392235976:role/amplify-pathfinderbackend-dev-181411-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::792392235976:role/amplify-pathfinderbackend-dev-181411-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-pathfinderbackend-dev-181411-deployment",
+      "UnauthRoleName": "amplify-pathfinderbackend-dev-181411-unauthRole",
+      "StackName": "amplify-pathfinderbackend-dev-181411",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:792392235976:stack/amplify-pathfinderbackend-dev-181411/bc017340-c79c-11ec-bbd9-02be7af018ee",
+      "AmplifyAppId": "d1345w45af90nh"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1345w45af90nh",
+          "type": "manual"
+        }
+      },
+      "auth": {
+        "pathfinderbackend35e4d986": {},
+        "true": {}
+      },
+      "function": {
+        "uploadData": {
+          "deploymentBucketName": "amplify-pathfinderbackend-dev-181411-deployment",
+          "s3Key": "amplify-builds/uploadData-505a70356c4543773043-build.zip"
+        }
+      }
+    }
+  }
+}

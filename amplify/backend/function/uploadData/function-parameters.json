@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "api": {
+      "pathfinderbackend": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    },
+    "auth": {
+      "pathfinderbackend35e4d986": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "data": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "User:@model(appsync)": [
+        "read",
+        "update"
+      ],
+      "AIModel:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ],
+      "Layer:@model(appsync)": [
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

@@ -1,0 +1,46 @@
+{
+  "name": "bbrrp-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "apollo:codegen": "rm -rf src/api && apollo client:codegen src/api --target=typescript --outputFlat",
+    "tsc": "tsc src/graphql/*.ts"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.5.10",
+    "aws-amplify": "^4.3.20",
+    "clsc": "^1.0.2",
+    "clsx": "^1.1.1",
+    "daisyui": "^2.14.2",
+    "faker": "^6.6.6",
+    "framer-motion": "^6.2.8",
+    "graphql": "^16.3.0",
+    "next": "12.1.0",
+    "next-with-apollo": "^5.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-query": "^3.34.16",
+    "url-join": "^4.0.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "@types/node": "17.0.21",
+    "@types/react": "17.0.40",
+    "@types/url-join": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "apollo": "^2.33.9",
+    "autoprefixer": "^10.4.2",
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "postcss": "^8.4.8",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.23",
+    "typescript": "4.6.2"
+  }
+}
