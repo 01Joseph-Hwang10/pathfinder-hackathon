@@ -271,12 +271,14 @@ const ResNet50 = () => {
                 className="btn btn-outline btn-accent"
                 onClick={async () => {
                   setLoading(true);
-                  const data = new Array(params.length)
+                  const data = 
+                    new Array(params.length)
                     .fill(0)
                     .map((_, index) => ({
                       type: params[index].type,
                       value: params[index].value,
                     }));
+                  
                   const response = await axios.post(
                     "http://localhost:9080/train",
                     {
