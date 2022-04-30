@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import Navigation from "@components/common/nav";
 import Header from "@components/home/header";
 import ModelList from "@components/home/model-list";
-import { API } from "aws-amplify";
+// import { API } from "aws-amplify";
 
 const Home: NextPage = () => {
   // useEffect(() => {
@@ -22,11 +22,11 @@ const Home: NextPage = () => {
   //     );
   //   })();
   // }, []);
-  useEffect(() => {
-    (async function () {
-      await API.endpoint("upload");
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async function () {
+  //     console.log(await API.post("upload", "/upload", { data: {} }));
+  //   })();
+  // }, []);
   return (
     <div className="group w-full focus-within:bg-base-300">
       <Navigation />

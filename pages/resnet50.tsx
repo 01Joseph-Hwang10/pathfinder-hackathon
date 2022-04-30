@@ -1,8 +1,10 @@
-import LayerIcon from "@components/common/layer-icon";
+import LayerIcon, { Layer } from "@components/common/layer-icon";
 import Navigation from "@components/common/nav";
-import { Caret, data } from "@components/home/model-list";
+import LayerDescriptions from "@components/detail/layer-descriptions";
+import { Caret } from "@components/home/model-list";
+import axios from "axios";
 import clsx from "clsx";
-import React from "react";
+import React, { useRef, useState } from "react";
 
 const GithubIcon = () => {
   return (
@@ -97,7 +99,154 @@ const Modal = () => {
   );
 };
 
+const model: Layer[] = [
+  {
+    name: "Conv2D",
+    modifiable_params_info: [
+      { name: "padding", type: "string", index: 3 },
+      { name: "input_shape", type: "tuple-n", index: 4 },
+    ],
+    params: [
+      { name: "filters", value: "64" },
+      { name: "kernel_size", value: " 7" },
+      { name: "activation", value: "relu" },
+      { name: "padding", value: "same" },
+      { name: "input_shape", value: [28, 28, 1] },
+    ],
+  },
+  {
+    name: "MaxPooling2D",
+    modifiable_params_info: [{ name: "pool_size", type: "int", index: 0 }],
+    params: [{ name: "pool_size", value: 2 }],
+  },
+  {
+    name: "Conv2D",
+    modifiable_params_info: [{ name: "padding", type: "string", index: 3 }],
+    params: [
+      { name: "filters", value: "128" },
+      { name: "kernel_size", value: " 3" },
+      { name: "activation", value: "relu" },
+      { name: "padding", value: "same" },
+    ],
+  },
+  {
+    name: "Conv2D",
+    modifiable_params_info: [{ name: "padding", type: "string", index: 3 }],
+    params: [
+      { name: "filters", value: "128" },
+      { name: "kernel_size", value: " 3" },
+      { name: "activation", value: "relu" },
+      { name: "padding", value: "same" },
+    ],
+  },
+  {
+    name: "MaxPooling2D",
+    modifiable_params_info: [{ name: "pool_size", type: "int", index: 0 }],
+    params: [{ name: "pool_size", value: 2 }],
+  },
+  {
+    name: "Conv2D",
+    modifiable_params_info: [{ name: "padding", type: "string", index: 3 }],
+    params: [
+      { name: "filters", value: "256" },
+      { name: "kernel_size", value: " 3" },
+      { name: "activation", value: "relu" },
+      { name: "padding", value: "same" },
+    ],
+  },
+  {
+    name: "Conv2D",
+    modifiable_params_info: [{ name: "padding", type: "string", index: 3 }],
+    params: [
+      { name: "filters", value: "256" },
+      { name: "kernel_size", value: " 3" },
+      { name: "activation", value: "relu" },
+      { name: "padding", value: "same" },
+    ],
+  },
+  {
+    name: "MaxPooling2D",
+    modifiable_params_info: [{ name: "pool_size", type: "int", index: 0 }],
+    params: [{ name: "pool_size", value: 2 }],
+  },
+  { name: "Flatten", modifiable_params_info: [], params: [] },
+  {
+    name: "Dense",
+    modifiable_params_info: [],
+    params: [
+      { name: "units", value: "128" },
+      { name: "activation", value: "relu" },
+    ],
+  },
+  {
+    name: "Dropout",
+    modifiable_params_info: [{ name: "rate", type: "float", index: 0 }],
+    params: [{ name: "rate", value: 0.5 }],
+  },
+  {
+    name: "Dense",
+    modifiable_params_info: [],
+    params: [
+      { name: "units", value: "64" },
+      { name: "activation", value: "relu" },
+    ],
+  },
+  {
+    name: "Dropout",
+    modifiable_params_info: [{ name: "rate", type: "float", index: 0 }],
+    params: [{ name: "rate", value: 0.5 }],
+  },
+  {
+    name: "Dense",
+    modifiable_params_info: [],
+    params: [
+      { name: "units", value: "10" },
+      { name: "activation", value: "softmax" },
+    ],
+  },
+];
+
+const RunIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className="bi bi-caret-right-fill"
+      viewBox="0 0 16 16"
+    >
+      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+    </svg>
+  );
+};
+
+const SlidersIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className="bi bi-sliders2-vertical"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M0 10.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H3V1.5a.5.5 0 0 0-1 0V10H.5a.5.5 0 0 0-.5.5ZM2.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Zm3-6.5A.5.5 0 0 0 6 6h1.5v8.5a.5.5 0 0 0 1 0V6H10a.5.5 0 0 0 0-1H6a.5.5 0 0 0-.5.5ZM8 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2A.5.5 0 0 0 8 1Zm3 9.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H14V1.5a.5.5 0 0 0-1 0V10h-1.5a.5.5 0 0 0-.5.5Zm2.5 1.5a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5Z"
+      />
+    </svg>
+  );
+};
+
 const ResNet50 = () => {
+  // eslint-disable-next-line no-undef
+  const timerRef = useRef<NodeJS.Timer>();
+  const [loading, setLoading] = useState(false);
+  const [modify, setModify] = useState(false);
+  const [params, setParams] = useState<
+    { name: string; value: any; type: string }[]
+  >([]);
   return (
     <div className="group w-full">
       <Navigation />
@@ -112,7 +261,53 @@ const ResNet50 = () => {
               <h2>Made by joseph1191</h2>
             </div>
             <div className="flex justify-end items-center gap-2">
-              <button className="btn btn-outline btn-accent">Run</button>
+              <button
+                className="btn btn-outline btn-secondary"
+                onClick={() => setModify(!modify)}
+              >
+                <SlidersIcon />
+              </button>
+              <button
+                className="btn btn-outline btn-accent"
+                onClick={async () => {
+                  setLoading(true);
+                  const data = new Array(params.length)
+                    .fill(0)
+                    .map((_, index) => ({
+                      type: params[index].type,
+                      value: params[index].value,
+                    }));
+                  const response = await axios.post(
+                    "http://localhost:9080/train",
+                    {
+                      data,
+                    }
+                  );
+                  const mid = response.data.mid;
+                  timerRef.current = setInterval(() => {
+                    axios
+                      .get(`http://localhost:9080/status?mid=${mid}`)
+                      .then((res) => {
+                        if (res.data.status !== "running") {
+                          if (timerRef.current) {
+                            clearInterval(timerRef.current);
+                          }
+                          setLoading(false);
+                          // axios
+                          //   .post("http://localhost:9080/test", {
+                          //     mid,
+                          //     img: "blabibla",
+                          //   })
+                          //   .then((_) => {
+                          //     setLoading(false);
+                          //   });
+                        }
+                      });
+                  }, 1000);
+                }}
+              >
+                {loading ? "Processing..." : <RunIcon />}
+              </button>
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-outline cursor-pointer">
                   <Ellipsis />
@@ -132,30 +327,28 @@ const ResNet50 = () => {
             </div>
           </div>
           <div className="flex justify-center flex-wrap items-center mt-10 xl:px-52">
-            {data[0].layers.map((layer, idx) => (
+            {model.map((layer, idx) => (
               <>
                 <div className="w-28 h-36 py-5 px-2 pl-5 bg-base-300 rounded-2xl my-2 flex flex-col justify-start items-center">
                   <div
                     className={clsx([
                       "flex justify-center items-center",
-                      layer.type !== "Flatten" && "-ml-3",
-                      layer.type === "Flatten" && "-mr-1",
+                      layer.name !== "Flatten" && "-ml-3",
+                      layer.name === "Flatten" && "-mr-1",
                     ])}
                   >
-                    <LayerIcon type={layer.type} size={50} />
+                    <LayerIcon name={layer.name} size={50} />
                   </div>
-                  <div className="flex flex-col justify-center items-center text-center mt-4 mr-2">
-                    <h1 className="card-title text-sm text-center">
-                      {layer.type}
-                    </h1>
-                    <h2 className="text-xs">Units: {idx * 100}</h2>
-                    <h2 className="text-xs text-[0.7rem]">RELU</h2>
-                    {idx === data[0].layers.length - 1 && (
-                      <h2 className="text-[0.5rem]">Softmax</h2>
-                    )}
-                  </div>
+                  <LayerDescriptions
+                    idx={idx}
+                    last={idx === model.length - 1}
+                    layer={layer}
+                    modify={modify}
+                    params={params}
+                    setParams={setParams}
+                  />
                 </div>
-                {idx !== data[0].layers.length - 1 && (
+                {idx !== model.length - 1 && (
                   <div className="mx-5">
                     <Caret />
                   </div>
@@ -163,7 +356,7 @@ const ResNet50 = () => {
               </>
             ))}
           </div>
-          <p className="mt-16">
+          <p className="my-16">
             A residual neural network is an artificial neural network. Residual
             neural networks utilize skip connections, or shortcuts to jump over
             some layers. Typical ResNet models are implemented with double- or

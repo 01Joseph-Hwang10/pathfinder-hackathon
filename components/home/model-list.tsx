@@ -31,50 +31,50 @@ export const data: Data[] = [
   {
     name: "Simple CNN Image Classification",
     layers: [
-      { type: "Conv2D" },
-      { type: "MaxPooling2D" },
-      { type: "Conv2D" },
-      { type: "Conv2D" },
-      { type: "MaxPooling2D" },
-      { type: "Conv2D" },
-      { type: "Flatten" },
-      { type: "Dropout" },
-      { type: "Dense" },
+      { name: "Conv2D" },
+      { name: "MaxPooling2D" },
+      { name: "Conv2D" },
+      { name: "Conv2D" },
+      { name: "MaxPooling2D" },
+      { name: "Conv2D" },
+      { name: "Flatten" },
+      { name: "Dropout" },
+      { name: "Dense" },
     ],
   },
   {
     name: "ResNet34",
     layers: [
-      { type: "Conv2D" },
-      { type: "Conv2D" },
-      { type: "MaxPooling2D" },
-      { type: "Flatten" },
-      { type: "Dense" },
-      { type: "Dropout" },
-      { type: "Dense" },
+      { name: "Conv2D" },
+      { name: "Conv2D" },
+      { name: "MaxPooling2D" },
+      { name: "Flatten" },
+      { name: "Dense" },
+      { name: "Dropout" },
+      { name: "Dense" },
     ],
   },
   {
     name: "VCG16",
     layers: [
-      { type: "Conv2D" },
-      { type: "MaxPooling2D" },
-      { type: "Flatten" },
-      { type: "Dense" },
-      { type: "Dropout" },
-      { type: "Dense" },
+      { name: "Conv2D" },
+      { name: "MaxPooling2D" },
+      { name: "Flatten" },
+      { name: "Dense" },
+      { name: "Dropout" },
+      { name: "Dense" },
     ],
   },
   {
     name: "LeNet",
     layers: [
-      { type: "Conv2D" },
-      { type: "Conv2D" },
-      { type: "MaxPooling2D" },
-      { type: "Conv2D" },
-      { type: "Flatten" },
-      { type: "Dropout" },
-      { type: "Dense" },
+      { name: "Conv2D" },
+      { name: "Conv2D" },
+      { name: "MaxPooling2D" },
+      { name: "Conv2D" },
+      { name: "Flatten" },
+      { name: "Dropout" },
+      { name: "Dense" },
     ],
   },
 ];
@@ -88,7 +88,7 @@ const ModelList = () => {
         className="flex flex-col justify-start items-center group-focus-within:-mt-96 w-full"
       >
         {data.map((model, index) => (
-          <li className="w-full px-6">
+          <li key={`li${index}`} className="w-full px-6">
             <div
               onClick={() => {
                 router.push("/resnet50");
@@ -103,8 +103,11 @@ const ModelList = () => {
                 <div className="flex justify-evenly items-center">
                   {model.layers.map((layer, idx) => (
                     <>
-                      <div className="w-20 h-20 py-2 px-2 pl-5">
-                        <LayerIcon type={layer.type} size={50} />
+                      <div
+                        key={`div${idx}`}
+                        className="w-20 h-20 py-2 px-2 pl-5"
+                      >
+                        <LayerIcon name={layer.name} size={50} />
                       </div>
                       {idx !== model.layers.length - 1 && (
                         <div className="mb-5">

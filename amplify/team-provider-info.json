@@ -21,6 +21,12 @@
           "appId": "d1345w45af90nh",
           "type": "cicd"
         }
+      },
+      "function": {
+        "upload": {
+          "deploymentBucketName": "amplify-pathfinderbackend-dev-181411-deployment",
+          "s3Key": "amplify-builds/upload-4b2f6568746e684b4c4e-build.zip"
+        }
       }
     }
   }

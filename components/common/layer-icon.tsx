@@ -8,8 +8,21 @@ type LayerType =
   | "Dropout"
   | "BatchNormalization";
 
+interface ModifiableParam {
+  name: string;
+  type: string;
+  index: number;
+}
+
+interface FixedParam {
+  name: string;
+  value: any;
+}
+
 export interface Layer {
-  type: LayerType;
+  name: LayerType;
+  modifiable_params_info?: ModifiableParam[];
+  params?: FixedParam[];
 }
 
 const Conv2D = () => {
@@ -199,7 +212,9 @@ const Dropout = () => {
   );
 };
 
-const LayerIcon: React.FC<Layer & { size: number }> = ({ type }) => {
+const LayerIcon: React.FC<{ name: LayerType; size: number }> = ({
+  name: type,
+}) => {
   if (type === "Conv2D") {
     return (
       <div className="flex justify-center items-center text-white w-10 h-10">

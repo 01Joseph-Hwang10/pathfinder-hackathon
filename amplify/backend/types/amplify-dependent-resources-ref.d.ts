@@ -18,7 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "uploadData": {
+        "upload": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
