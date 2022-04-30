@@ -97,7 +97,14 @@ const ImageModal: React.FC<{ mid: number }> = ({ mid }) => {
           </label>
           <h3 className="text-3xl font-bold">Select Image For Test</h3>
           <div className="flex flex-col justify-start items-center mt-10 w-full">
-            {output && <h2>{output}</h2>}
+            {output && (
+              <>
+              <h2 className="card-title">Result: {output}</h2>
+              <button onClick={() => {
+                setOutput(null);
+              }} className="btn btn-link">Try Again</button>
+              </>
+            )}
             {loading && <h2>Processing...</h2>}
             {!loading &&
               !output &&
@@ -356,10 +363,11 @@ const ResNet50 = () => {
                       data,
                     }
                   );
+                  console.log(response.data)
                   setMid(response.data.mid);
                   timerRef.current = setInterval(() => {
                     axios
-                      .get(`http://localhost:9080/status?mid=${mid}`)
+                      .get(`http://localhost:9080/status?mid=${response.data.mid}`)
                       .then((res) => {
                         if (res.data.status !== "running") {
                           if (timerRef.current) {
