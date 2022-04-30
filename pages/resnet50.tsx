@@ -60,7 +60,61 @@ const Ellipsis = () => {
   );
 };
 
-const Modal = () => {
+const TestIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className="bi bi-bar-chart-fill"
+      viewBox="0 0 16 16"
+    >
+      <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
+    </svg>
+  );
+};
+
+const ImageModal = () => {
+  return (
+    <>
+      <input type="checkbox" id="image-popup" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box relative flex flex-col justify-start items-center w-full">
+          <label
+            htmlFor="my-modal-3"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <h3 className="text-3xl font-bold">Select Image For Test</h3>
+          <div className="flex flex-col justify-start items-center mt-10 w-full">
+            <img
+              className="cursor-pointer bg-center bg-cover"
+              width={500}
+              height={400}
+              src="https://hexas3bucket.s3.ap-northeast-2.amazonaws.com/17ce1970455f36ecbee2ec07ec5a5030.jpg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDgaDmFwLW5vcnRoZWFzdC0yIkcwRQIhANQGQt4Uuvo8Q1kUbYA8fB4PjEW92M4ETtQHuqtFWQJeAiBa86jij2VxKTFYIPFyY1CYvpRvIAcbJ%2BIJTC6ndsJnbSrtAgjx%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAMaDDQxMzMwODYyNDczMiIMwRB8zJU6Q2xRXv03KsECu0Zu%2Fr6HbdtVy8kPlHDwQREQ%2BcOibLBKixj4xgZiTIynQXOWjkYy%2F83%2FHyfQVD%2BuxiNg3q1xylUD52Rtmg1T1OonubTEDlWjAZL4YJ1IuM2OFX3CDDfnJ6RXHgFlR%2FfO2Cw4gZgdVTFGTSp5gifMob6Q1Zh09OwkjPqA%2BeQVrgdFkPHVMLTBlJHQhQL2BJ66JEsjmrusjvFoLt25ckoJArYEUH5C0dv3QdzjiArWjgsEdA4FPOzP92ilQQBAJu%2Bul1tZN%2BVCnw9t7I3uU8D0TCGLTHbTIuMm%2BGTjycpAUw1rMjG6YEhHBWiKa%2FE73akHqJiPRstgdPP3oDPpBkwTvgGbPCD7lKj%2BU45G4hxofTSVb3BUJbcpuidlKXI5PSdWbMWqvfacdE01Jj4AxKuEgvWetw6oXu33zTLs2MK62SBsMKmXsJMGOrMCKVkaCAM02FexLn2Lq5%2FV8RZHJWm%2F92cO2%2BtRv%2FbZKA7CqLRzSELps3ilxIW1niP0qkvHTvcn0QIsfd0DtWZGyLIoPt7lJayDwLZ8X0ChkId1lgbiHyqLTtEdMTkLke3v0DteF4lnnC94%2FYi5sr5bYwkJNDJ0PV5DRbb9%2BqXiGXrcT4aoShYZfmBE%2Bq4GtsrIMQzrF4yzkuV3grnn8fORrGpcSZ24WD%2BMjMNkvBxyCUkYNudUa2RhWEMkpofMf%2BoVqDRuSrusXtKkFsDo7y39OszLSHD5RfjNOtD0SUPW2l63ZE07a3E%2B6d3wx8GTNQpOuH5ZlqKtQA3AklkOe3E29TsjI%2BhjqKbctOIaCNsZKjh5OrQPLtWz%2F7hroMDbDhGcwljFRDDmNVZNF6eUkr3PkL71TA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220429T235203Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIAWAOY5D5OMJGFXYMK%2F20220429%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=1048465a4709a0368339b6636c66ee950ec83770cedd8062908bf69237689a4f"
+            />
+            <img
+              className="cursor-pointer bg-center bg-cover"
+              width={500}
+              height={400}
+              src="https://hexas3bucket.s3.ap-northeast-2.amazonaws.com/111691750.2.jpg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDgaDmFwLW5vcnRoZWFzdC0yIkcwRQIhANQGQt4Uuvo8Q1kUbYA8fB4PjEW92M4ETtQHuqtFWQJeAiBa86jij2VxKTFYIPFyY1CYvpRvIAcbJ%2BIJTC6ndsJnbSrtAgjx%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAMaDDQxMzMwODYyNDczMiIMwRB8zJU6Q2xRXv03KsECu0Zu%2Fr6HbdtVy8kPlHDwQREQ%2BcOibLBKixj4xgZiTIynQXOWjkYy%2F83%2FHyfQVD%2BuxiNg3q1xylUD52Rtmg1T1OonubTEDlWjAZL4YJ1IuM2OFX3CDDfnJ6RXHgFlR%2FfO2Cw4gZgdVTFGTSp5gifMob6Q1Zh09OwkjPqA%2BeQVrgdFkPHVMLTBlJHQhQL2BJ66JEsjmrusjvFoLt25ckoJArYEUH5C0dv3QdzjiArWjgsEdA4FPOzP92ilQQBAJu%2Bul1tZN%2BVCnw9t7I3uU8D0TCGLTHbTIuMm%2BGTjycpAUw1rMjG6YEhHBWiKa%2FE73akHqJiPRstgdPP3oDPpBkwTvgGbPCD7lKj%2BU45G4hxofTSVb3BUJbcpuidlKXI5PSdWbMWqvfacdE01Jj4AxKuEgvWetw6oXu33zTLs2MK62SBsMKmXsJMGOrMCKVkaCAM02FexLn2Lq5%2FV8RZHJWm%2F92cO2%2BtRv%2FbZKA7CqLRzSELps3ilxIW1niP0qkvHTvcn0QIsfd0DtWZGyLIoPt7lJayDwLZ8X0ChkId1lgbiHyqLTtEdMTkLke3v0DteF4lnnC94%2FYi5sr5bYwkJNDJ0PV5DRbb9%2BqXiGXrcT4aoShYZfmBE%2Bq4GtsrIMQzrF4yzkuV3grnn8fORrGpcSZ24WD%2BMjMNkvBxyCUkYNudUa2RhWEMkpofMf%2BoVqDRuSrusXtKkFsDo7y39OszLSHD5RfjNOtD0SUPW2l63ZE07a3E%2B6d3wx8GTNQpOuH5ZlqKtQA3AklkOe3E29TsjI%2BhjqKbctOIaCNsZKjh5OrQPLtWz%2F7hroMDbDhGcwljFRDDmNVZNF6eUkr3PkL71TA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220430T004224Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIAWAOY5D5OMJGFXYMK%2F20220430%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=996014e1e884bd30eeb7f491809116d27fd76fd3c3a73db0d4ecaf0079884ac7"
+            />
+            <img
+              className="cursor-pointer bg-center bg-cover"
+              width={500}
+              height={400}
+              src="https://hexas3bucket.s3.ap-northeast-2.amazonaws.com/img_20210330145713_c421a01a.webp?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDgaDmFwLW5vcnRoZWFzdC0yIkcwRQIhANQGQt4Uuvo8Q1kUbYA8fB4PjEW92M4ETtQHuqtFWQJeAiBa86jij2VxKTFYIPFyY1CYvpRvIAcbJ%2BIJTC6ndsJnbSrtAgjx%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAMaDDQxMzMwODYyNDczMiIMwRB8zJU6Q2xRXv03KsECu0Zu%2Fr6HbdtVy8kPlHDwQREQ%2BcOibLBKixj4xgZiTIynQXOWjkYy%2F83%2FHyfQVD%2BuxiNg3q1xylUD52Rtmg1T1OonubTEDlWjAZL4YJ1IuM2OFX3CDDfnJ6RXHgFlR%2FfO2Cw4gZgdVTFGTSp5gifMob6Q1Zh09OwkjPqA%2BeQVrgdFkPHVMLTBlJHQhQL2BJ66JEsjmrusjvFoLt25ckoJArYEUH5C0dv3QdzjiArWjgsEdA4FPOzP92ilQQBAJu%2Bul1tZN%2BVCnw9t7I3uU8D0TCGLTHbTIuMm%2BGTjycpAUw1rMjG6YEhHBWiKa%2FE73akHqJiPRstgdPP3oDPpBkwTvgGbPCD7lKj%2BU45G4hxofTSVb3BUJbcpuidlKXI5PSdWbMWqvfacdE01Jj4AxKuEgvWetw6oXu33zTLs2MK62SBsMKmXsJMGOrMCKVkaCAM02FexLn2Lq5%2FV8RZHJWm%2F92cO2%2BtRv%2FbZKA7CqLRzSELps3ilxIW1niP0qkvHTvcn0QIsfd0DtWZGyLIoPt7lJayDwLZ8X0ChkId1lgbiHyqLTtEdMTkLke3v0DteF4lnnC94%2FYi5sr5bYwkJNDJ0PV5DRbb9%2BqXiGXrcT4aoShYZfmBE%2Bq4GtsrIMQzrF4yzkuV3grnn8fORrGpcSZ24WD%2BMjMNkvBxyCUkYNudUa2RhWEMkpofMf%2BoVqDRuSrusXtKkFsDo7y39OszLSHD5RfjNOtD0SUPW2l63ZE07a3E%2B6d3wx8GTNQpOuH5ZlqKtQA3AklkOe3E29TsjI%2BhjqKbctOIaCNsZKjh5OrQPLtWz%2F7hroMDbDhGcwljFRDDmNVZNF6eUkr3PkL71TA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220430T004241Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIAWAOY5D5OMJGFXYMK%2F20220430%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Signature=5191aac22d5b815f829670cb6b303242794a12cfa19cb03c4285c196dca7c6b5"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const ExportModal = () => {
   return (
     <>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -247,10 +301,12 @@ const ResNet50 = () => {
   const [params, setParams] = useState<
     { name: string; value: any; type: string }[]
   >([]);
+  const [mid, setMid] = useState<number>(-1);
   return (
     <div className="group w-full">
       <Navigation />
-      <Modal />
+      <ExportModal />
+      <ImageModal />
       <div className="w-full h-full flex justify-start items-center flex-col">
         <div className="mt-28 w-full p-10 bg-primary rounded-t-3xl h-7/12">
           <div className="flex justify-between items-center">
@@ -283,7 +339,7 @@ const ResNet50 = () => {
                       data,
                     }
                   );
-                  const mid = response.data.mid;
+                  setMid(response.data.mid);
                   timerRef.current = setInterval(() => {
                     axios
                       .get(`http://localhost:9080/status?mid=${mid}`)
@@ -308,6 +364,13 @@ const ResNet50 = () => {
               >
                 {loading ? "Processing..." : <RunIcon />}
               </button>
+              <label
+                htmlFor="image-popup"
+                className="btn btn-outline btn-info cursor-pointer"
+                onClick={() => {}}
+              >
+                {loading ? "Processing..." : <TestIcon />}
+              </label>
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-outline cursor-pointer">
                   <Ellipsis />
