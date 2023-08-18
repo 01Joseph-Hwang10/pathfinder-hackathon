@@ -16,6 +16,13 @@
 ![home](./examples/home.png)
 ![detail](./examples/detail.png)
 
+## Getting Started
+
+```bash
+npm ci # Install dependencies
+npm run dev # Run development server
+```
+
 ## Project Overview
 
 본 프로젝트는 "AI 모델을 시작적으로 구현하고, 이를 플랫폼에 공유하며, 플랫폼에서 학습 및 테스트까지 할 수 있는 것이 있다면 좋지 않을까?" 하는 아이디어에서 시작했다. 이에 대한 프로토타입의 일환으로, 깃허브를 모티브로 AI 모델을 간단히 브라우징 할 수 있는 Modelhub를 개발하였다.
