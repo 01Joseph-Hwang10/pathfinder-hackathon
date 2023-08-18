@@ -19,8 +19,15 @@
 ## Getting Started
 
 ```bash
-npm ci # Install dependencies
-npm run dev # Run development server
+# Install dependencies according to package-lock.json
+# It's important to use npm ci instead of npm install
+# because npm ci will install exact versions of dependencies
+# and it will prevent package-lock.json from being modified
+# which prevents potential errors due to dependency version mismatch
+npm ci
+
+# Run the development server
+npm run dev
 ```
 
 ## Project Overview
